@@ -1,3 +1,3 @@
-export default function getClients(){
+export default function getClients() {
     return {type: "GET_CLIENTS_REQUESTED"};
 }

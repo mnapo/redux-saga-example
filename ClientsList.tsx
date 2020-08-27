@@ -13,7 +13,7 @@ const styles = StyleSheet.create(
 
 const ClientsList = (props) => {
     let dataSrc = props.clients;
-    if (props.filteredClients.length){
+    if (props.filteredClients.length) {
         dataSrc = props.filteredClients;
     }
     return (
