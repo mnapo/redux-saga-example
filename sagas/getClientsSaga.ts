@@ -5,6 +5,7 @@ function* fetchClients(){
     yield put({type: "GET_CLIENTS_PENDING"});
     try{
         let clients = yield call(getClients);
+        console.log(clients);
         yield put({type: "GET_CLIENTS_SUCCESSFUL", clients});
     } catch(error){
         console.log(error);

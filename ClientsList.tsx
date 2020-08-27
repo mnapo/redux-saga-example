@@ -1,6 +1,5 @@
 import React from 'react';
 import {Text} from 'react-native-paper';
-import {useSelector} from 'react-redux';
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create(
@@ -12,25 +11,24 @@ const styles = StyleSheet.create(
         }
     });
 
-const ClientsList = () => {
-    const state = useSelector((state) => (state));
-
+const ClientsList = (props) => {
+    let dataSrc = props.clients;
+    if (props.filteredClients.length){
+        dataSrc = props.filteredClients;
+    }
     return (
-        state.pending ?
-        <Text style={styles.text}>
-            Cargando...
-        </Text> :
-        (Array.isArray(state.clients) && state.clients.length) ?
-        <Text style={styles.text}>
-            {
-                state.clients.map(item => {
-                    return <li key={item.name}>{item.name}</li>;
-                })
-            }
-        </Text>: 
-        <Text style={styles.text}>
-            Presioná para ver una lista detallada
-        </Text>
+        props.pending ?
+        <Text style={styles.text}>Cargando...</Text> :
+        props.clients.length ?
+                <Text style={styles.text}>
+                    {
+                        dataSrc.map(item => {
+                        return <li key={item.name}>{item.name} - <i>edad:</i> {item.age} (
+                        {item.active ? <i>activo</i> : <i>inactivo</i>})</li>;
+                        })
+                    }
+                </Text> :
+            <Text style={styles.text}>Presioná para ver una lista detallada</Text>
     );
 };
 export default ClientsList;

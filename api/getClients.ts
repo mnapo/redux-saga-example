@@ -1,16 +1,18 @@
+import ky from 'ky';
+
 const clients = [
     { 
-        id: 1, name: "Pepito", age: 28, key: "Pepito"
+        id: 1, name: "Pepito", age: 28
     },
     { 
-        id: 2, name: "Emi", age: 35, key: "Emi"
+        id: 2, name: "Emi", age: 35
     },
     { 
-        id: 3, name: "Jorge", age: 46, key: "Jorge"
+        id: 3, name: "Jorge", age: 46
     }   
 ];
 
-const clientsPromise = new Promise((resolve, reject) => 
+const clientsPromiseMock = new Promise((resolve, reject) => 
 {
     setTimeout(function () 
     {
@@ -18,7 +20,7 @@ const clientsPromise = new Promise((resolve, reject) =>
         {
             return client.id === 99;
         });
-        if (checkId !== -1) 
+        if (checkId !== -1)
         {
             reject(
                 { 
@@ -26,11 +28,11 @@ const clientsPromise = new Promise((resolve, reject) =>
                 });
         }
         resolve(clients);
-    }, 3000);
+    }, 10000);
 });
 
 const getClients = () => 
 {
-    return clientsPromise;
+    return ky.get("http://localhost:8000/clients").json();
 }
 export default getClients;
