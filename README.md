@@ -1,3 +1,9 @@
+REACT Native example of a client list requested from server through API methods, and ways of applying filters to it.
+
+This project combines de use of multiple JS libraries, such as react-redux, react-native-paper, expo, sagas, ky and flexSearch.
+
+----
+
 Flexsearch usage example
 
 Initialize index with Document descriptor:
