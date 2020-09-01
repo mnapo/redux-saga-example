@@ -13,11 +13,11 @@ const clients = (
     switch(action.type) {
         case "GET_CLIENTS_SUCCESSFUL":
             clientsIndex.add(action.clients);
-            return {...state, clients: action.clients, pending: false};
+            return {...state, clients: action.clients, pending: false}
         case "GET_CLIENTS_FAILED":
-            return {...state, error: action.error, pending: false};
+            return {...state, error: action.error, pending: false}
         case "GET_CLIENTS_PENDING":
-            return {...state, pending: true};
+            return {...state, pending: true}
         case "SET_CLIENTS_SEARCH":
             return {
                 ...state,
@@ -27,7 +27,7 @@ const clients = (
             return {
                 ...state,
                 filteredClients: clientsIndex.where(action.filter)
-            };
+            }
         case "SET_CLIENTS_SEARCH_AND_FILTER":
             return {
                 ...state,
